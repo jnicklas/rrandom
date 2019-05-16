@@ -33,12 +33,10 @@ class RRandom
     attr_accessor :loader
   end
 
-  def initialize(random_domain: false)
-    @use_random_domain = random_domain
-  end
-
-  def use_random_domain?
-    @use_random_domain
+  def initialize(**options)
+    options.each do |key, value|
+      instance_variable_set(:"@#{key}", value)
+    end
   end
 
   def gender
